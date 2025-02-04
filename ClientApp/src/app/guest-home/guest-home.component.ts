@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import * as crypto from 'crypto-js'; // Importamos la librería para hash
+import * as crypto from 'crypto-js';
 
 @Component({
   selector: 'app-guest-home',

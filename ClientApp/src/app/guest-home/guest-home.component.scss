@@ -1,4 +1,4 @@
-// --- CONTENEDOR PRINCIPAL ---
+// --- MAIN CONTAINER ---
 .home-container {
   min-height: 100vh;
   display: flex;
@@ -26,7 +26,7 @@
   }
 }
 
-// --- FORMULARIO FLOTANTE ---
+// --- FLOATING FORM (Registration & Login) ---
 .floating-form {
   border-radius: 10px;
   max-width: 450px;
@@ -40,7 +40,7 @@
   justify-content: space-between;
 }
 
-// --- PESTAÑAS DEL FORMULARIO ---
+// --- FORM TABS (Switch between Register and Login) ---
 .form-tabs {
   display: flex;
   justify-content: center;
@@ -70,7 +70,7 @@
   }
 }
 
-// --- FORMULARIOS (Registro y Login) ---
+// --- FORM CONTAINER (Holds Register and Login Forms) ---
 .form-container {
   flex-grow: 1;
   display: flex;
@@ -79,6 +79,7 @@
   gap: 15px;
 }
 
+// Hidden fields (to maintain spacing consistency)
 .hidden-field {
   visibility: hidden;
   height: 0;
@@ -86,7 +87,7 @@
   padding: 0;
 }
 
-// --- ENLACE "OLVIDÉ MI CONTRASEÑA" ---
+// --- FORGOT PASSWORD LINK ---
 .forgot-password {
   font-size: 14px;
   color: #28a745;
@@ -102,7 +103,7 @@
   }
 }
 
-// --- SECCIÓN DE CARACTERÍSTICAS ---
+// --- FEATURES SECTION ---
 .features-section {
   padding: 50px 0;
 
@@ -146,7 +147,7 @@
   }
 }
 
-// --- SECCIÓN DE ESTADÍSTICAS ---
+// --- STATISTICS SECTION ---
 .stats-section {
   background: #f5f5f5;
   padding: 80px 0;
@@ -194,7 +195,7 @@
     position: relative;
 
     .stat-image {
-      width: 360px; // 3 veces más grande
+      width: 360px; // Enlarged 3 times
       height: auto;
       transition: transform 0.5s ease-out;
     }

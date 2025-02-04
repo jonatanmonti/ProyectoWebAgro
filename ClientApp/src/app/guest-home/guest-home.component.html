@@ -1,18 +1,23 @@
-<app-header></app-header>
+﻿<app-header></app-header>
 
 <div class="home-container">
   <div class="container">
     <div class="row align-items-center">
-      <!-- Sección de texto -->
+
+      <!-- Text Section -->
+
       <div class="col-md-6 text-white">
         <h1 class="fw-bold">El éxito de tu negocio agropecuario comienza aquí</h1>
         <p class="lead">Conocé AgroByte, el software de gestión agropecuario más elegido por los productores.</p>
       </div>
 
-      <!-- Formulario con pestañas -->
+      <!-- Form Section with Tabs -->
+
       <div class="col-md-6 d-flex justify-content-center">
         <div class="floating-form card p-4">
-          <!-- Pestañas -->
+
+          <!-- Tabs -->
+
           <div class="form-tabs">
             <div class="tab"
                  [class.active]="activeTab === 'register'"
@@ -27,9 +32,11 @@
           </div>
 
           <div class="form-container">
-            <!-- Formulario de Registro -->
+
+            <!-- Registration Form -->
+
             <form *ngIf="activeTab === 'register'" class="d-flex flex-column" (submit)="registerUser()">
-              <h2 class="text-center fw-bold">¡Regístrate y conocé más!</h2>
+              <h2 class="fw-bold text-center">¡Regístrate y conocé más!</h2>
               <div class="mb-3">
                 <label class="form-label">Nombre completo *</label>
                 <div class="d-flex">
@@ -52,9 +59,10 @@
               <button type="submit" class="btn btn-success w-100">ENVIAR</button>
             </form>
 
-            <!-- Formulario de Login -->
+            <!-- Login Form -->
+
             <form *ngIf="activeTab === 'login'" class="d-flex flex-column" (submit)="loginUser()">
-              <h2 class="text-center fw-bold">¡Inicia sesión!</h2>
+              <h2 class="fw-bold text-center">¡Inicia sesión!</h2>
               <div class="mb-3">
                 <label class="form-label">Correo electrónico *</label>
                 <input type="email" class="form-control" name="loginEmail" [(ngModel)]="loginData.email" placeholder="Correo electrónico" required>
@@ -76,7 +84,9 @@
   </div>
 </div>
 
-<div class="container text-center features-section">
+<!-- Features Section -->
+
+<div class="features-section container text-center">
   <h2 class="fw-bold text-success">Potenciamos el trabajo de los productores</h2>
   <p class="text-muted">
     Integramos las operaciones productivas, administrativas, contables y financieras en una única plataforma de gestión.
@@ -108,17 +118,22 @@
   </div>
 </div>
 
+<!-- Statistics Section -->
+
 <div class="stats-section">
   <div class="container text-center">
     <div class="row align-items-center">
-      <!-- Izquierda: Estadística 1 -->
+
+      <!-- Left: Statistic 1 -->
+
       <div class="col-md-4 stat-item">
         <img src="/assets/trigos.png" alt="Hectáreas gestionadas" class="stat-icon">
         <p class="stat-number">+7M</p>
         <p class="stat-text">Hectáreas gestionadas <br> con AgroByte Campo.</p>
       </div>
 
-      <!-- Centro: Imagen +30 con animación de movimiento -->
+      <!-- Center: Animated +30 Years Image -->
+
       <div class="col-md-4 stat-item">
         <div class="stat-image-container">
           <img src="/assets/yearPlus.png" alt="+30 Años de Experiencia" class="stat-image">
@@ -128,7 +143,8 @@
         <button class="btn btn-outline-success">MIRÁ NUESTRA HISTORIA</button>
       </div>
 
-      <!-- Derecha: Estadística 2 -->
+      <!-- Right: Statistic 2 -->
+
       <div class="col-md-4 stat-item">
         <img src="/assets/vacas.png" alt="Cabezas de ganado" class="stat-icon">
         <p class="stat-number">+2.6M</p>
@@ -139,4 +155,5 @@
 </div>
 
 <!-- Footer -->
+
 <app-footer></app-footer>
