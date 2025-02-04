@@ -1,0 +1,142 @@
+<app-header></app-header>
+
+<div class="home-container">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Sección de texto -->
+      <div class="col-md-6 text-white">
+        <h1 class="fw-bold">El éxito de tu negocio agropecuario comienza aquí</h1>
+        <p class="lead">Conocé AgroByte, el software de gestión agropecuario más elegido por los productores.</p>
+      </div>
+
+      <!-- Formulario con pestañas -->
+      <div class="col-md-6 d-flex justify-content-center">
+        <div class="floating-form card p-4">
+          <!-- Pestañas -->
+          <div class="form-tabs">
+            <div class="tab"
+                 [class.active]="activeTab === 'register'"
+                 (click)="switchTab('register')">
+              Registro
+            </div>
+            <div class="tab"
+                 [class.active]="activeTab === 'login'"
+                 (click)="switchTab('login')">
+              Login
+            </div>
+          </div>
+
+          <div class="form-container">
+            <!-- Formulario de Registro -->
+            <form *ngIf="activeTab === 'register'" class="d-flex flex-column" (submit)="registerUser()">
+              <h2 class="text-center fw-bold">¡Regístrate y conocé más!</h2>
+              <div class="mb-3">
+                <label class="form-label">Nombre completo *</label>
+                <div class="d-flex">
+                  <input type="text" class="form-control me-2" name="firstName" [(ngModel)]="registerData.firstName" placeholder="Nombre" required>
+                  <input type="text" class="form-control" name="lastName" [(ngModel)]="registerData.lastName" placeholder="Apellido" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Correo electrónico *</label>
+                <input type="email" class="form-control" name="email" [(ngModel)]="registerData.email" placeholder="Correo electrónico" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Teléfono</label>
+                <input type="text" class="form-control" name="phone" [(ngModel)]="registerData.phone" placeholder="Número de teléfono">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Contraseña *</label>
+                <input type="password" class="form-control" name="passwordHash" [(ngModel)]="registerData.passwordHash" placeholder="Contraseña" required>
+              </div>
+              <button type="submit" class="btn btn-success w-100">ENVIAR</button>
+            </form>
+
+            <!-- Formulario de Login -->
+            <form *ngIf="activeTab === 'login'" class="d-flex flex-column" (submit)="loginUser()">
+              <h2 class="text-center fw-bold">¡Inicia sesión!</h2>
+              <div class="mb-3">
+                <label class="form-label">Correo electrónico *</label>
+                <input type="email" class="form-control" name="loginEmail" [(ngModel)]="loginData.email" placeholder="Correo electrónico" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Contraseña *</label>
+                <input type="password" class="form-control" name="loginPassword" [(ngModel)]="loginData.passwordHash" placeholder="Contraseña" required>
+              </div>
+              <div class="mb-3 text-end">
+                <a href="#" class="forgot-password">Olvidé mi contraseña</a>
+              </div>
+              <button type="submit" class="btn btn-success w-100">INGRESAR</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center features-section">
+  <h2 class="fw-bold text-success">Potenciamos el trabajo de los productores</h2>
+  <p class="text-muted">
+    Integramos las operaciones productivas, administrativas, contables y financieras en una única plataforma de gestión.
+    <br>
+    Es una solución para la operativa diaria de empresas chicas, medianas y grandes.
+  </p>
+
+  <div class="row justify-content-center">
+    <div class="col-md-2 col-sm-4 col-6 feature-item">
+      <img src="/assets/tractor.png" alt="Maquinaria agrícola" class="feature-icon">
+      <p class="text-success">Maquinaria agrícola</p>
+    </div>
+    <div class="col-md-2 col-sm-4 col-6 feature-item">
+      <img src="/assets/Trigo.png" alt="Agricultura" class="feature-icon">
+      <p class="text-success">Agricultura</p>
+    </div>
+    <div class="col-md-2 col-sm-4 col-6 feature-item">
+      <img src="/assets/vaca.png" alt="Ganadería y Tambo" class="feature-icon">
+      <p class="text-success">Ganadería y Tambo</p>
+    </div>
+    <div class="col-md-2 col-sm-4 col-6 feature-item">
+      <img src="/assets/Finanza.png" alt="Admin. y finanzas" class="feature-icon">
+      <p class="text-success">Admin. y finanzas</p>
+    </div>
+    <div class="col-md-2 col-sm-4 col-6 feature-item">
+      <img src="/assets/Camion.png" alt="Fletes" class="feature-icon">
+      <p class="text-success">Fletes</p>
+    </div>
+  </div>
+</div>
+
+<div class="stats-section">
+  <div class="container text-center">
+    <div class="row align-items-center">
+      <!-- Izquierda: Estadística 1 -->
+      <div class="col-md-4 stat-item">
+        <img src="/assets/trigos.png" alt="Hectáreas gestionadas" class="stat-icon">
+        <p class="stat-number">+7M</p>
+        <p class="stat-text">Hectáreas gestionadas <br> con AgroByte Campo.</p>
+      </div>
+
+      <!-- Centro: Imagen +30 con animación de movimiento -->
+      <div class="col-md-4 stat-item">
+        <div class="stat-image-container">
+          <img src="/assets/yearPlus.png" alt="+30 Años de Experiencia" class="stat-image">
+        </div>
+        <p class="stat-title">AÑOS DE EXPERIENCIA</p>
+        <p class="stat-subtitle">Presentes en Latinoamérica.</p>
+        <button class="btn btn-outline-success">MIRÁ NUESTRA HISTORIA</button>
+      </div>
+
+      <!-- Derecha: Estadística 2 -->
+      <div class="col-md-4 stat-item">
+        <img src="/assets/vacas.png" alt="Cabezas de ganado" class="stat-icon">
+        <p class="stat-number">+2.6M</p>
+        <p class="stat-text">Cabezas de ganado <br> gestionadas con AgroByte Campo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>

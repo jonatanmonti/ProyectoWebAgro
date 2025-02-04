@@ -1,0 +1,56 @@
+// Estilos del header
+.transparent-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3); // Fondo semi-transparente
+  padding: 15px 0;
+  z-index: 10; // Asegura que esté por encima de la imagen
+
+  .navbar-nav {
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .btn-success {
+    background: #28a745;
+    border: none;
+
+    &:hover {
+      background: #218838;
+    }
+  }
+}
+
+// Imagen de fondo del hero
+.hero-section {
+  height: 100vh;
+  background: url('/assets/fondo-agro.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  .btn-success {
+    margin-top: 20px;
+  }
+}

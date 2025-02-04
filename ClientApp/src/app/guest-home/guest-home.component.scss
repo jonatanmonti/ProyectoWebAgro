@@ -1,0 +1,224 @@
+// --- CONTENEDOR PRINCIPAL ---
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: url('/assets/background.jpg') no-repeat center center;
+  background-size: cover;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  .container {
+    z-index: 2;
+  }
+
+  .text-white {
+    color: white;
+  }
+}
+
+// --- FORMULARIO FLOTANTE ---
+.floating-form {
+  border-radius: 10px;
+  max-width: 450px;
+  min-height: 520px;
+  width: 100%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  background: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+// --- PESTAÑAS DEL FORMULARIO ---
+.form-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ddd;
+
+  .tab {
+    flex: 1;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #f8f9fa;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    color: #666;
+    text-align: center;
+    transition: 0.3s;
+
+    &.active {
+      background: white;
+      color: #28a745;
+      border-bottom: 3px solid #28a745;
+    }
+
+    &:hover {
+      color: #28a745;
+    }
+  }
+}
+
+// --- FORMULARIOS (Registro y Login) ---
+.form-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.hidden-field {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+// --- ENLACE "OLVIDÉ MI CONTRASEÑA" ---
+.forgot-password {
+  font-size: 14px;
+  color: #28a745;
+  text-decoration: none;
+  text-align: right;
+  display: block;
+  margin-top: -5px;
+  transition: 0.3s;
+
+  &:hover {
+    text-decoration: underline;
+    color: #218838;
+  }
+}
+
+// --- SECCIÓN DE CARACTERÍSTICAS ---
+.features-section {
+  padding: 50px 0;
+
+  h2 {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 16px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+  }
+
+  .feature-item {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover .feature-icon {
+      transform: scale(1.1);
+    }
+
+    p {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+}
+
+// --- SECCIÓN DE ESTADÍSTICAS ---
+.stats-section {
+  background: #f5f5f5;
+  padding: 80px 0;
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .stat-item {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .stat-icon {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #008000;
+      margin-top: 5px;
+    }
+
+    .stat-text {
+      color: #444;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+  }
+
+  .stat-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+
+    .stat-image {
+      width: 360px; // 3 veces más grande
+      height: auto;
+      transition: transform 0.5s ease-out;
+    }
+
+    &:hover .stat-image {
+      transform: scale(1.05);
+    }
+  }
+
+  .stat-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 15px;
+    font-size: 22px;
+    color: #333;
+  }
+
+  .stat-subtitle {
+    font-size: 16px;
+    color: #777;
+  }
+
+  .btn-outline-success {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+}
