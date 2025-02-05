@@ -1,4 +1,4 @@
-﻿<app-header></app-header>
+<app-header></app-header>
 
 <div class="home-container">
   <div class="container">
@@ -36,46 +36,68 @@
             <!-- Registration Form -->
 
             <form *ngIf="activeTab === 'register'" class="d-flex flex-column" (submit)="registerUser()">
-              <h2 class="fw-bold text-center">¡Regístrate y conocé más!</h2>
+              <h2 class="text-center fw-bold">Sign up and learn more!</h2>
+
               <div class="mb-3">
-                <label class="form-label">Nombre completo *</label>
+                <label class="form-label">Full Name *</label>
                 <div class="d-flex">
-                  <input type="text" class="form-control me-2" name="firstName" [(ngModel)]="registerData.firstName" placeholder="Nombre" required>
-                  <input type="text" class="form-control" name="lastName" [(ngModel)]="registerData.lastName" placeholder="Apellido" required>
+                  <input type="text" class="form-control me-2" name="firstName"
+                         [(ngModel)]="registerData.firstName" placeholder="First Name"
+                         [class.is-invalid]="errors.firstName">
+                  <input type="text" class="form-control" name="lastName"
+                         [(ngModel)]="registerData.lastName" placeholder="Last Name"
+                         [class.is-invalid]="errors.lastName">
                 </div>
+                <div *ngIf="errors.firstName" class="text-danger">{{ errors.firstName }}</div>
+                <div *ngIf="errors.lastName" class="text-danger">{{ errors.lastName }}</div>
               </div>
+
               <div class="mb-3">
-                <label class="form-label">Correo electrónico *</label>
-                <input type="email" class="form-control" name="email" [(ngModel)]="registerData.email" placeholder="Correo electrónico" required>
+                <label class="form-label">Email *</label>
+                <input type="email" class="form-control" name="email"
+                       [(ngModel)]="registerData.email" placeholder="Email"
+                       [class.is-invalid]="errors.email">
+                <div *ngIf="errors.email" class="text-danger">{{ errors.email }}</div>
               </div>
+
               <div class="mb-3">
-                <label class="form-label">Teléfono</label>
-                <input type="text" class="form-control" name="phone" [(ngModel)]="registerData.phone" placeholder="Número de teléfono">
+                <label class="form-label">Password *</label>
+                <input type="password" class="form-control" name="passwordHash"
+                       [(ngModel)]="registerData.passwordHash" placeholder="Password"
+                       [class.is-invalid]="errors.passwordHash">
+                <div *ngIf="errors.passwordHash" class="text-danger">{{ errors.passwordHash }}</div>
               </div>
-              <div class="mb-3">
-                <label class="form-label">Contraseña *</label>
-                <input type="password" class="form-control" name="passwordHash" [(ngModel)]="registerData.passwordHash" placeholder="Contraseña" required>
-              </div>
-              <button type="submit" class="btn btn-success w-100">ENVIAR</button>
+
+              <button type="submit" class="btn btn-success w-100">SUBMIT</button>
             </form>
 
             <!-- Login Form -->
-
             <form *ngIf="activeTab === 'login'" class="d-flex flex-column" (submit)="loginUser()">
-              <h2 class="fw-bold text-center">¡Inicia sesión!</h2>
+              <h2 class="text-center fw-bold">Sign in!</h2>
+
               <div class="mb-3">
-                <label class="form-label">Correo electrónico *</label>
-                <input type="email" class="form-control" name="loginEmail" [(ngModel)]="loginData.email" placeholder="Correo electrónico" required>
+                <label class="form-label">Email *</label>
+                <input type="email" class="form-control" name="loginEmail"
+                       [(ngModel)]="loginData.email" placeholder="Email"
+                       [class.is-invalid]="errors.email">
+                <div *ngIf="errors.email" class="text-danger">{{ errors.email }}</div>
               </div>
+
               <div class="mb-3">
-                <label class="form-label">Contraseña *</label>
-                <input type="password" class="form-control" name="loginPassword" [(ngModel)]="loginData.passwordHash" placeholder="Contraseña" required>
+                <label class="form-label">Password *</label>
+                <input type="password" class="form-control" name="loginPassword"
+                       [(ngModel)]="loginData.passwordHash" placeholder="Password"
+                       [class.is-invalid]="errors.passwordHash">
+                <div *ngIf="errors.passwordHash" class="text-danger">{{ errors.passwordHash }}</div>
               </div>
+
               <div class="mb-3 text-end">
-                <a href="#" class="forgot-password">Olvidé mi contraseña</a>
+                <a href="#" class="forgot-password">Forgot my password</a>
               </div>
-              <button type="submit" class="btn btn-success w-100">INGRESAR</button>
+
+              <button type="submit" class="btn btn-success w-100">LOGIN</button>
             </form>
+
 
           </div>
         </div>

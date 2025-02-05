@@ -33,5 +33,7 @@ namespace ProyectoWebAgro.Models
 
         public DateTime LastUpdatedDate { get; set; } = DateTime.UtcNow;
 
+        public bool IsVerified { get; set; } = false;
+
     }
 }
