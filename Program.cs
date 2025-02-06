@@ -16,6 +16,14 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
+//// Obtener el contexto y ejecutar la inicialización
+//using (var scope = app.Services.CreateScope())
+//{
+//    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+//    context.Database.Migrate();
+//    AppDbContext.Initialize(context);
+//}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

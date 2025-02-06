@@ -20,6 +20,12 @@ export class GuestHomeComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.router.navigate(['/home']);
+    }
+
     this.route.queryParams.subscribe(params => {
       if (params['token']) {
         this.verifyEmail(params['token']);
@@ -87,12 +93,12 @@ export class GuestHomeComponent implements OnInit {
   validateLogin(): boolean {
     this.errors = {};
 
-    if (!this.registerData.email.trim() || !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.registerData.email)) {
+    if (!this.loginData.email.trim() || !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.loginData.email)) {
       this.errors.email = "The email address is not valid.";
-    } else if (!this.validateEmail(this.registerData.email)) {
+    } else if (!this.validateEmail(this.loginData.email)) {
       this.errors.email = "Only Hotmail, Gmail, Yahoo, or Outlook email addresses are allowed.";
     }
-    if (!this.registerData.passwordHash.trim() || this.registerData.passwordHash.length < 8) {
+    if (!this.loginData.passwordHash.trim() || this.loginData.passwordHash.length < 8) {
       this.errors.passwordHash = "The password must be at least 8 characters long.";
     }
     return Object.keys(this.errors).length === 0;

@@ -9,6 +9,8 @@ import { GuestHomeComponent } from './guest-home/guest-home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './guards/auth.guard';
+import { CatalogComponent } from './catalog/catalog.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     GuestHomeComponent,
     FooterComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,7 +27,8 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: GuestHomeComponent, pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
+      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'catalog', component: CatalogComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: '' }
     ])
   ],

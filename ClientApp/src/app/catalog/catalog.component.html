@@ -1,0 +1,30 @@
+<div class="catalog-container">
+  <h2 class="text-center">Agricultural Product Catalog</h2>
+
+  <div class="restock-section">
+    <h3>Restock Product</h3>
+    <input type="number" [(ngModel)]="restockQuantity" placeholder="Enter amount" />
+    <button (click)="restockProduct()">Restock</button>
+  </div>
+
+  <div class="product-grid">
+    <div *ngFor="let product of products"
+         class="product-card"
+         [class.selected]="product.id === selectedProduct?.id"
+         (click)="selectProduct(product)">
+      <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <p><strong>Price per Ton:</strong> ${{ product.pricePerTon }}</p>
+      <p><strong>Stock Available:</strong> {{ product.availableStock }} tons</p>
+      <p><strong>Category:</strong> {{ product.category }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="selectedProduct" class="sale-form">
+    <h3>Sell Product</h3>
+    <p><strong>Selected Product:</strong> {{ selectedProduct.name }}</p>
+    <input type="number" [(ngModel)]="quantityToSell" placeholder="Enter amount to sell" />
+    <button (click)="sellProduct()">Sell</button>
+  </div>
+</div>
