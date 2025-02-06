@@ -39,11 +39,13 @@ namespace ProyectoWebAgro.Controllers
             await _context.SaveChangesAsync();
 
             var token = GenerateVerificationToken(user.Email);
+            Console.WriteLine($"Generated Verification Token: {token}");
 
             SendVerificationEmail(user.Email, token);
 
             return Ok(new { message = "Usuario registrado exitosamente. Por favor, verifica tu correo electrónico." });
         }
+
 
         private string GenerateVerificationToken(string email)
         {
@@ -52,9 +54,9 @@ namespace ProyectoWebAgro.Controllers
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, email),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
+        new Claim(JwtRegisteredClaimNames.Sub, email),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
 
             var token = new JwtSecurityToken(
                 _configuration["Jwt:Issuer"],
@@ -64,12 +66,15 @@ namespace ProyectoWebAgro.Controllers
                 signingCredentials: credentials
             );
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var generatedToken = new JwtSecurityTokenHandler().WriteToken(token);
+            Console.WriteLine($"Token Generado: {generatedToken}");
+            return generatedToken;
         }
+
 
         private void SendVerificationEmail(string email, string token)
         {
-            var verificationLink = $"https://tuapp.com/verify?token={token}";
+            var verificationLink = $"https://localhost:44418/api/auth/verify?token={token}";
             var subject = "Verifica tu email";
             var body = $"Haz clic en el siguiente enlace para verificar tu email: <a href='{verificationLink}'>Verificar Email</a>";
 
@@ -96,11 +101,23 @@ namespace ProyectoWebAgro.Controllers
         [HttpGet("verify")]
         public async Task<IActionResult> VerifyEmail(string token)
         {
+            Console.WriteLine($"🔹 Token recibido: {token}");
+
             var principal = ValidateVerificationToken(token);
             if (principal == null)
                 return BadRequest(new { message = "Token inválido o expirado." });
 
-            var email = principal.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            foreach (var claim in principal.Claims)
+            {
+                Console.WriteLine($"Claim Type: {claim.Type} - Value: {claim.Value}");
+            }
+
+            var email = principal.FindFirstValue(ClaimTypes.NameIdentifier);
+            Console.WriteLine($"🔹 Email extraído del token: {email}");
+
+            if (string.IsNullOrEmpty(email))
+                return BadRequest(new { message = "Error al extraer email del token." });
+
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
                 return NotFound(new { message = "Usuario no encontrado." });
@@ -110,6 +127,8 @@ namespace ProyectoWebAgro.Controllers
 
             return Ok(new { message = "Tu cuenta ha sido verificada exitosamente." });
         }
+
+
 
         private ClaimsPrincipal ValidateVerificationToken(string token)
         {

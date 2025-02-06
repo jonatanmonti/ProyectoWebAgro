@@ -1,23 +1,25 @@
 <app-header></app-header>
 
+<!-- 🔹 Mensaje de verificación de email -->
+<div *ngIf="verificationMessage" class="alert alert-info text-center">
+  {{ verificationMessage }}
+</div>
+
 <div class="home-container">
   <div class="container">
     <div class="row align-items-center">
 
-      <!-- Text Section -->
-
+      <!-- 🔹 Sección de Texto -->
       <div class="col-md-6 text-white">
         <h1 class="fw-bold">El éxito de tu negocio agropecuario comienza aquí</h1>
         <p class="lead">Conocé AgroByte, el software de gestión agropecuario más elegido por los productores.</p>
       </div>
 
-      <!-- Form Section with Tabs -->
-
+      <!-- 🔹 Sección de Formulario con Pestañas -->
       <div class="col-md-6 d-flex justify-content-center">
         <div class="floating-form card p-4">
 
-          <!-- Tabs -->
-
+          <!-- 🔹 Pestañas de Registro y Login -->
           <div class="form-tabs">
             <div class="tab"
                  [class.active]="activeTab === 'register'"
@@ -33,8 +35,7 @@
 
           <div class="form-container">
 
-            <!-- Registration Form -->
-
+            <!-- 🔹 Formulario de Registro -->
             <form *ngIf="activeTab === 'register'" class="d-flex flex-column" (submit)="registerUser()">
               <h2 class="text-center fw-bold">Sign up and learn more!</h2>
 
@@ -60,6 +61,15 @@
                 <div *ngIf="errors.email" class="text-danger">{{ errors.email }}</div>
               </div>
 
+              <!-- 🔹 Campo de Teléfono (Restaurado) -->
+              <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="text" class="form-control" name="phone"
+                       [(ngModel)]="registerData.phone" placeholder="Phone"
+                       [class.is-invalid]="errors.phone">
+                <div *ngIf="errors.phone" class="text-danger">{{ errors.phone }}</div>
+              </div>
+
               <div class="mb-3">
                 <label class="form-label">Password *</label>
                 <input type="password" class="form-control" name="passwordHash"
@@ -71,7 +81,7 @@
               <button type="submit" class="btn btn-success w-100">SUBMIT</button>
             </form>
 
-            <!-- Login Form -->
+            <!-- 🔹 Formulario de Login -->
             <form *ngIf="activeTab === 'login'" class="d-flex flex-column" (submit)="loginUser()">
               <h2 class="text-center fw-bold">Sign in!</h2>
 
@@ -98,7 +108,6 @@
               <button type="submit" class="btn btn-success w-100">LOGIN</button>
             </form>
 
-
           </div>
         </div>
       </div>
@@ -106,8 +115,7 @@
   </div>
 </div>
 
-<!-- Features Section -->
-
+<!-- 🔹 Sección de Características -->
 <div class="features-section container text-center">
   <h2 class="fw-bold text-success">Potenciamos el trabajo de los productores</h2>
   <p class="text-muted">
@@ -140,22 +148,19 @@
   </div>
 </div>
 
-<!-- Statistics Section -->
-
+<!-- 🔹 Sección de Estadísticas -->
 <div class="stats-section">
   <div class="container text-center">
     <div class="row align-items-center">
 
-      <!-- Left: Statistic 1 -->
-
+      <!-- 🔹 Izquierda: Estadística 1 -->
       <div class="col-md-4 stat-item">
         <img src="/assets/trigos.png" alt="Hectáreas gestionadas" class="stat-icon">
         <p class="stat-number">+7M</p>
         <p class="stat-text">Hectáreas gestionadas <br> con AgroByte Campo.</p>
       </div>
 
-      <!-- Center: Animated +30 Years Image -->
-
+      <!-- 🔹 Centro: Imagen +30 Años con animación -->
       <div class="col-md-4 stat-item">
         <div class="stat-image-container">
           <img src="/assets/yearPlus.png" alt="+30 Años de Experiencia" class="stat-image">
@@ -165,8 +170,7 @@
         <button class="btn btn-outline-success">MIRÁ NUESTRA HISTORIA</button>
       </div>
 
-      <!-- Right: Statistic 2 -->
-
+      <!-- 🔹 Derecha: Estadística 2 -->
       <div class="col-md-4 stat-item">
         <img src="/assets/vacas.png" alt="Cabezas de ganado" class="stat-icon">
         <p class="stat-number">+2.6M</p>
@@ -176,6 +180,5 @@
   </div>
 </div>
 
-<!-- Footer -->
-
+<!-- 🔹 Footer -->
 <app-footer></app-footer>

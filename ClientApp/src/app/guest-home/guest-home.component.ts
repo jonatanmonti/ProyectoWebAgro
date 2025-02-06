@@ -15,12 +15,11 @@ export class GuestHomeComponent implements OnInit {
   loginData = { email: '', passwordHash: '' };
 
   errors: any = {};
-  verificationMessage: string = ''; // 🔹 Muestra mensajes de verificación de email
+  verificationMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // 📌 Detectar el token de verificación en la URL
     this.route.queryParams.subscribe(params => {
       if (params['token']) {
         this.verifyEmail(params['token']);

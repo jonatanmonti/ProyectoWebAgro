@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using ProyectoWebAgro.Data;
+using ProyectoWebAgro.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHostedService<UnverifiedUserCleanupService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
