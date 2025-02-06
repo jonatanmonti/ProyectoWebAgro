@@ -34,7 +34,7 @@ export class GuestHomeComponent implements OnInit {
 
   validateEmail(email: string): boolean {
     const allowedProviders = ["hotmail", "gmail", "yahoo", "outlook"];
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/;
 
     if (!emailRegex.test(email)) return false;
 
@@ -45,19 +45,22 @@ export class GuestHomeComponent implements OnInit {
   validateRegister(): boolean {
     this.errors = {};
 
-    if (!this.registerData.firstName.trim()) {
-      this.errors.firstName = "First name is required.";
+    if (!this.registerData.firstName.trim() || !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/.test(this.registerData.firstName)) {
+      this.errors.firstName = "The first name is not valid.";
     }
-    if (!this.registerData.lastName.trim()) {
-      this.errors.lastName = "Last name is required.";
+    if (!this.registerData.lastName.trim() || !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/.test(this.registerData.lastName)) {
+      this.errors.lastName = "The last name is not valid.";
     }
-    if (!this.registerData.email.trim()) {
-      this.errors.email = "Email is required.";
+    if (!this.registerData.email.trim() || !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.registerData.email)) {
+      this.errors.email = "The email address is not valid.";
     } else if (!this.validateEmail(this.registerData.email)) {
-      this.errors.email = "Only Hotmail, Gmail, Yahoo, or Outlook emails are allowed.";
+      this.errors.email = "Only Hotmail, Gmail, Yahoo, or Outlook email addresses are allowed.";
     }
-    if (!this.registerData.passwordHash.trim()) {
-      this.errors.passwordHash = "Password is required.";
+    if (!this.registerData.passwordHash.trim() || this.registerData.passwordHash.length < 8) {
+      this.errors.passwordHash = "The password must be at least 8 characters long.";
+    }
+    if (!this.registerData.phone.trim() || !/^\+?[0-9]{7,15}$/.test(this.registerData.phone)) {
+      this.errors.phone = "The phone number is not valid.";
     }
     return Object.keys(this.errors).length === 0;
   }
@@ -84,13 +87,13 @@ export class GuestHomeComponent implements OnInit {
   validateLogin(): boolean {
     this.errors = {};
 
-    if (!this.loginData.email.trim()) {
-      this.errors.email = "Email is required.";
-    } else if (!this.validateEmail(this.loginData.email)) {
-      this.errors.email = "Only Hotmail, Gmail, Yahoo, or Outlook emails are allowed.";
+    if (!this.registerData.email.trim() || !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.registerData.email)) {
+      this.errors.email = "The email address is not valid.";
+    } else if (!this.validateEmail(this.registerData.email)) {
+      this.errors.email = "Only Hotmail, Gmail, Yahoo, or Outlook email addresses are allowed.";
     }
-    if (!this.loginData.passwordHash.trim()) {
-      this.errors.passwordHash = "Password is required.";
+    if (!this.registerData.passwordHash.trim() || this.registerData.passwordHash.length < 8) {
+      this.errors.passwordHash = "The password must be at least 8 characters long.";
     }
     return Object.keys(this.errors).length === 0;
   }
