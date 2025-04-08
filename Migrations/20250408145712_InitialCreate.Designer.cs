@@ -12,8 +12,8 @@ using ProyectoWebAgro.Data;
 namespace ProyectoWebAgro.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250206195027_AddAgriculturalProductsTable")]
-    partial class AddAgriculturalProductsTable
+    [Migration("20250408145712_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
