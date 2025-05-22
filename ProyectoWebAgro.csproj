@@ -25,7 +25,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClientApp\src\app\components\" />
-    <Folder Include="ClientApp\src\app\services\" />
+    <Folder Include="ClientApp\src\app\guest-about-us\" />
+    <Folder Include="ClientApp\src\app\guest-blog\" />
+    <Folder Include="ClientApp\src\app\guest-contact\" />
+    <Folder Include="ClientApp\src\app\guest-solutions\" />
     <Folder Include="ClientApp\src\assets\Items\" />
     <Folder Include="Migrations\" />
   </ItemGroup>

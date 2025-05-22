@@ -11,6 +11,10 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CatalogComponent } from './catalog/catalog.component';
+import { GuestAboutUsComponent } from './guest-about-us/guest-about-us.component';
+import { GuestBlogComponent } from './guest-blog/guest-blog.component';
+import { GuestContactComponent } from './guest-contact/guest-contact.component';
+import { GuestSolutionsComponent } from './guest-solutions/guest-solutions.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { CatalogComponent } from './catalog/catalog.component';
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    CatalogComponent
+    CatalogComponent,
+    GuestAboutUsComponent,
+    GuestBlogComponent,
+    GuestContactComponent,
+    GuestSolutionsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
