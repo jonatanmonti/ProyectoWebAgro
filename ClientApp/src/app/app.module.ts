@@ -35,6 +35,10 @@ import { GuestSolutionsComponent } from './guest-solutions/guest-solutions.compo
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: GuestHomeComponent, pathMatch: 'full' },
+      { path: 'about', component: GuestAboutUsComponent },
+      { path: 'blog', component: GuestBlogComponent },
+      { path: 'contact', component: GuestContactComponent },
+      { path: 'solutions', component: GuestSolutionsComponent },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'catalog', component: CatalogComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: '' }

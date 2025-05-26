@@ -30,6 +30,7 @@
     <Folder Include="ClientApp\src\app\guest-contact\" />
     <Folder Include="ClientApp\src\app\guest-solutions\" />
     <Folder Include="ClientApp\src\assets\Items\" />
+    <Folder Include="ClientApp\src\assets\about-us\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

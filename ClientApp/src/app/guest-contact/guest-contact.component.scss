@@ -1,0 +1,24 @@
+.about-hero {
+  background-image: url('../../assets/about-us/contact.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 350px;
+  position: relative;
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .content {
+    z-index: 2;
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+
+  .breadcrumb {
+    font-size: 1rem;
+    color: #f1f1f1;
+  }
+}
