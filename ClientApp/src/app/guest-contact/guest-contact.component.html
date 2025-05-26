@@ -1,3 +1,4 @@
+﻿<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 <app-header></app-header>
 
 <!-- Imagen Hero tipo banner -->
@@ -6,6 +7,61 @@
   <div class="content position-relative">
     <h1 class="fw-bold display-5">Contacto</h1>
     <p class="breadcrumb text-white">Inicio &nbsp; › &nbsp; Contacto</p>
+  </div>
+</div>
+
+<div class="contact-section py-5 container">
+  <div class="row">
+    <!-- Columna izquierda: Datos de contacto -->
+    <div class="col-md-5 mb-4 mb-md-0">
+      <div class="contact-info mb-4">
+        <div class="d-flex align-items-start mb-3">
+          <i class="bi bi-house-door-fill fs-3 text-primary me-3"></i>
+          <div>
+            <strong>Dirección</strong>
+            <p class="mb-0">Calle 123<br>Localida - Provincia</p>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-start">
+          <i class="bi bi-telephone-fill fs-3 text-primary me-3"></i>
+          <div>
+            <strong>Teléfonos</strong>
+            <p class="mb-0">(0000) 0000-0000<br>(0000) 1111-1111</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha: Formulario -->
+    <div class="col-md-7">
+      <p>
+        Completá el siguiente formulario para ponerte en contacto con nosotros. En breve, responderemos a tu consulta
+        y podremos coordinar para que conozcas nuestro sistema de gestión con más de 30 años de trayectoria y utilizado
+        por cientos de empresas del sector agropecuario.
+      </p>
+
+      <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Apellido y Nombre *" required>
+        </div>
+        <div class="mb-3">
+          <input type="tel" class="form-control" placeholder="Teléfono *" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Correo Electrónico *" required>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Localidad">
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="4" placeholder="Mensaje *" required></textarea>
+        </div>
+        <div class="text-end">
+          <button type="submit" class="btn btn-gradient px-5 py-2 rounded-pill">Enviar</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
