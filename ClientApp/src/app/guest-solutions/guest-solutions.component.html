@@ -1,5 +1,76 @@
-<app-header></app-header>
+﻿<app-header></app-header>
 
+<!-- Imagen Hero tipo banner -->
+<div class="about-hero d-flex align-items-center justify-content-center text-white text-center">
+  <div class="overlay w-100 h-100 position-absolute"></div>
+  <div class="content position-relative">
+    <h1 class="fw-bold display-5">Soluciones</h1>
+    <p class="breadcrumb text-white">productos &nbsp; › &nbsp; soluciones</p>
+  </div>
+</div>
+
+<!-- 🔹 Sección: Áreas de gestión -->
+<section class="solutions-section py-5 container text-center">
+  <h2 class="text-success fw-bold">Agrobyte Gestión</h2>
+  <h4 class="fw-bold">La Gestión de Tu Campo en Un Solo Software</h4>
+
+  <div class="row mt-4">
+    <div class="col-md-4 mb-4" *ngFor="let area of areas">
+      <img [src]="area.icon" alt="{{area.title}}" class="mb-2 icon">
+      <h5 class="fw-bold">{{ area.title }}</h5>
+    </div>
+  </div>
+
+  <p class="mt-4">
+    Nos gusta crear soluciones: un lugar con toda la información que necesitás de tu empresa.<br>
+    <strong>Agrobyte Gestión</strong> permite integrar en un solo sistema la información comercial, administrativa,
+    contable, impositiva y financiera con los procesos productivos agrícolas y ganaderos.
+  </p>
+</section>
+
+<!-- 🔹 Sección: Ventajas -->
+<section class="solutions-section py-5 container text-center">
+  <h4 class="text-success fw-bold mb-5">¿Cuáles son las ventajas de aplicar Agrobyte Gestión?</h4>
+
+  <div class="row g-4">
+    <div class="col-6 col-md-3" *ngFor="let v of ventajas">
+      <img [src]="v.icon" alt="Ventaja" class="mb-3 icon">
+      <p>{{ v.text }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 Sección: Funcionalidades -->
+<section class="solutions-section py-5 container text-center">
+  <h4 class="text-success fw-bold">Una manera integral y simple de gestionar tu empresa agropecuaria</h4>
+  <h5 class="text-primary fw-bold mt-3">¿Qué te permite gestionar Agrobyte Gestión?</h5>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-4 mb-4" *ngFor="let f of funcionalidades">
+      <img [src]="f.icon" alt="Funcionalidad" class="mb-2 icon">
+      <p [innerHTML]="f.text"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 Sección: Implementación -->
+<section class="solutions-section py-5 text-center">
+  <div class="container">
+    <h4 class="fw-bold">IMPLEMENTACIÓN GARANTIZADA</h4>
+    <p class="mb-5">
+      Con <strong>Agrobyte Gestión</strong> te garantizamos acompañamiento y asistencia personalizada durante el proceso
+      de implementación, ajustado a tu empresa.
+    </p>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-4" *ngFor="let card of implementacion">
+        <div class="card h-100 border-success p-3 text-start shadow-sm">
+          <p class="text-success">{{ card }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 🔹 Footer -->
 <app-footer></app-footer>
