@@ -15,6 +15,7 @@ import { GuestAboutUsComponent } from './guest-about-us/guest-about-us.component
 import { GuestBlogComponent } from './guest-blog/guest-blog.component';
 import { GuestContactComponent } from './guest-contact/guest-contact.component';
 import { GuestSolutionsComponent } from './guest-solutions/guest-solutions.component';
+import { StripHtmlPipe } from './pipes/strip-html.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { GuestSolutionsComponent } from './guest-solutions/guest-solutions.compo
     GuestAboutUsComponent,
     GuestBlogComponent,
     GuestContactComponent,
-    GuestSolutionsComponent
+    GuestSolutionsComponent,
+    StripHtmlPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

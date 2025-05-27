@@ -1,0 +1,49 @@
+.vision-img {
+  max-width: 100%;
+  height: auto;
+  height: 450px;
+  object-fit: contain;
+}
+
+.about-hero {
+  background-image: url('../../assets/blog/blog.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 350px;
+  position: relative;
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .content {
+    z-index: 2;
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+
+  .breadcrumb {
+    font-size: 1rem;
+    color: #f1f1f1;
+  }
+}
+
+.blog-card {
+  border-radius: 16px;
+  background: #fff;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  }
+}
+
+.blog-img {
+  width: 250px;
+  height: 100%;
+  object-fit: cover;
+  border-right: 1px solid #eee;
+}
