@@ -177,30 +177,59 @@ namespace ProyectoWebAgro.Controllers
             return generatedToken;
         }
 
-        private void SendVerificationEmail(string email, string token)
+        private void SendVerificationEmail(string email, string token, string? firstName = null)
         {
-            var verificationLink = $"https://localhost:44418/api/auth/verify?token={token}";
-            var subject = "Verifica tu email";
-            var body = $"Haz clic en el siguiente enlace para verificar tu email: <a href='{verificationLink}'>Verificar Email</a>";
+            var frontendBaseUrl = _configuration["Frontend:BaseUrl"] ?? "https://localhost:44418";
+            var verificationLink = $"{frontendBaseUrl}/verify-email?token={token}";
+            var appName = "AgroByte";
+            var appLogo = _configuration["EmailSettings:LogoUrl"] ?? "https://via.placeholder.com/128x32?text=AgroByte";
+            var year = DateTime.UtcNow.Year.ToString();
+
+            // Load template file
+            var root = Directory.GetCurrentDirectory();
+            var templatePath = Path.Combine(root, "wwwroot", "email-templates", "VerifyEmailTemplate.html");
+            var html = System.IO.File.ReadAllText(templatePath);
+
+            html = html.Replace("{{APP_NAME}}", appName)
+                       .Replace("{{APP_LOGO_URL}}", appLogo)
+                       .Replace("{{FIRST_NAME}}", WebUtility.HtmlEncode(firstName ?? "there"))
+                       .Replace("{{VERIFICATION_LINK}}", verificationLink)
+                       .Replace("{{CURRENT_YEAR}}", year);
+
+            // Text fallback (for clients that don't render HTML)
+            var text = $@"Confirm your email for {appName}
+
+                Hi {firstName ?? "there"}, open this link to verify your email:
+                {verificationLink}
+
+                This link expires in 24 hours.";
 
             var smtp = new SmtpClient
             {
                 Host = _configuration["EmailSettings:SmtpServer"],
                 Port = int.Parse(_configuration["EmailSettings:Port"]),
                 EnableSsl = bool.Parse(_configuration["EmailSettings:EnableSsl"]),
-                Credentials = new NetworkCredential(_configuration["EmailSettings:FromEmail"], _configuration["EmailSettings:Password"])
+                Credentials = new NetworkCredential(
+                    _configuration["EmailSettings:FromEmail"],
+                    _configuration["EmailSettings:Password"])
             };
 
             var message = new MailMessage
             {
-                From = new MailAddress(_configuration["EmailSettings:FromEmail"], "Soporte AgroByte"),
-                Subject = subject,
-                Body = body,
+                From = new MailAddress(_configuration["EmailSettings:FromEmail"], $"{appName} Support"),
+                Subject = "Confirm your email",
                 IsBodyHtml = true
             };
-
             message.To.Add(email);
+
+            // Alternate views
+            var htmlView = AlternateView.CreateAlternateViewFromString(html, Encoding.UTF8, "text/html");
+            var textView = AlternateView.CreateAlternateViewFromString(text, Encoding.UTF8, "text/plain");
+            message.AlternateViews.Add(textView);
+            message.AlternateViews.Add(htmlView);
+
             smtp.Send(message);
         }
+
     }
 }

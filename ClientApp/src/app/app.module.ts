@@ -16,6 +16,7 @@ import { GuestBlogComponent } from './guest-blog/guest-blog.component';
 import { GuestContactComponent } from './guest-contact/guest-contact.component';
 import { GuestSolutionsComponent } from './guest-solutions/guest-solutions.component';
 import { StripHtmlPipe } from './pipes/strip-html.pipe';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StripHtmlPipe } from './pipes/strip-html.pipe';
     GuestBlogComponent,
     GuestContactComponent,
     GuestSolutionsComponent,
-    StripHtmlPipe
+    StripHtmlPipe,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,6 +45,7 @@ import { StripHtmlPipe } from './pipes/strip-html.pipe';
       { path: 'solutions', component: GuestSolutionsComponent },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'catalog', component: CatalogComponent, canActivate: [AuthGuard] },
+      { path: 'verify-email', component: VerifyEmailComponent },
       { path: '**', redirectTo: '' }
     ])
   ],
