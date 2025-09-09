@@ -1,5 +1,11 @@
-<body>
-  <main class="container">
-    <router-outlet></router-outlet>
-  </main>
-</body>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Global modal host -->
+<ng-container *ngIf="vm$ | async as vm">
+  <app-shared-modal [visible]="vm.visible"
+             [config]="vm.config || {}"
+             (closed)="onClosed()">
+  </app-shared-modal>
+</ng-container>

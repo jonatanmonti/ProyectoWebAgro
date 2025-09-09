@@ -17,6 +17,7 @@ import { GuestContactComponent } from './guest-contact/guest-contact.component';
 import { GuestSolutionsComponent } from './guest-solutions/guest-solutions.component';
 import { StripHtmlPipe } from './pipes/strip-html.pipe';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { SharedModalComponent } from './shared-modal/shared-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     GuestContactComponent,
     GuestSolutionsComponent,
     StripHtmlPipe,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    SharedModalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
